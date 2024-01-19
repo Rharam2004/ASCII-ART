@@ -3,27 +3,36 @@ package ascii
 import (
 	"bufio"
 
+	"fmt"
+
 	"os"
 
 	"strings"
 )
 
-func Line(number int) string {
+func Lines(integers int) string {
     // Prepare an empty string to store the line of text
-    line := ""
+    lines := ""
 	var file *os.File
-    
+    var errors error
+
+    file, errors = os.Open("banners/standard.txt")
+    if errors != nil {
+        fmt.Print(errors)
+        os.Exit(0)
+    }
+
     // Create a reader tool to read the contents of a file
     reader := bufio.NewReader(file)
     
     // Read lines from the file until we reach the desired line number
-    for r := 0; r < number; r++ {
-        line, _ = reader.ReadString('\n')
+    for r := 0; r < integers; r++ {
+        lines, _ = reader.ReadString('\n')
     }
     
     // Remove the trailing newline character, if any
-    line = strings.TrimSuffix(line, "\n")
+    lines = strings.TrimSuffix(lines, "\n")
     
     // Return the line of text
-    return line
+    return lines
 }

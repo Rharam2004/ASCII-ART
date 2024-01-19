@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	if len(os.Args) <= 1 || len(os.Args) > 3{
+	if len(os.Args) <= 1 || len(os.Args) >= 4{
 		fmt.Println("Error: Incorrect number of arguments")
 		return
 	}
@@ -42,10 +42,11 @@ func main() {
 		if word != "" {
 			for i := 0; i < 8; i++ {
 				for _, char := range word {
-					line += ascii.Line(2 + int(char-' ')*9 + i)
+					line += ascii.Lines(2 + int(char-' ')*9 + i)
 				}
 				if line != "" {
 					fmt.Println(line)
+				line = ""
 				}
 			}
 		}
