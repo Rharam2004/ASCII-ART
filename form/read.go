@@ -15,7 +15,7 @@ func Lines(integers int) string {
     lines := ""
 	var file *os.File
     var errors error
-
+    
     file, errors = os.Open("banners/standard.txt")
     if errors != nil {
         fmt.Print(errors)

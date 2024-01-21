@@ -1,7 +1,7 @@
 package main
 
 import (
-	"ascii/form"
+	ascii "ascii/form"
 
 	"fmt"
 
@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	if len(os.Args) <= 1 || len(os.Args) >= 4{
+	if len(os.Args) <= 1 || len(os.Args) > 2 {
 		fmt.Println("Error: Incorrect number of arguments")
 		return
 	}
@@ -46,7 +46,7 @@ func main() {
 				}
 				if line != "" {
 					fmt.Println(line)
-				line = ""
+					line = ""
 				}
 			}
 		}
